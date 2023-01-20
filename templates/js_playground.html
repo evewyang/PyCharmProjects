@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<title>Digital Clock</title>
+<style>
+/* The format for the clock object */
+#clock { /* for an id="clock" property in a tag */
+    font: bold 24px sans-serif; /* font */
+    background: #ddf; /* background color of the clock */
+    padding: 15px; /* space around the clock */
+    border: solid black 2px; /* border */
+}
+</style>
+<body>
+ Hello Javascript!
+ <script>
+    var x=1;
+    console.log("The value of x is: ",x)
+ </script>
+ <script>
+    function probation(warn_level) {
+        var scores = [["John", 78], ["Jing", 91], ["Jahangir", 82], ["Jana", 54]];
+        var total_scores = 0
+        var names = []
+        for (i = 0; i < scores.length; i++) {
+            if (scores[i][1] < warn_level) {
+                names.push(scores[i][0])
+}
+            total_scores += scores[i][1]
+        }
+        return [names,total_scores]
+    }
+    console.log(probation(80));
+ </script>
+ <h1>A Constantly Updating Clock</h1>
+<!-- Create a space where we can add the clock -->
+<!-- Note the id="clock". There can be only one tag with id="clock" -->
+<!-- The actual time will be added by the JavaScript script -->
+ <span id="clock"></span>
+ <script>
+// Define a function to display the current time
+    function displayTime() {
+        let clock = document.querySelector("#clock"); // Get element with id="clock"
+        let now = new Date(); // Get current time
+        clock.textContent = now.toLocaleTimeString(); // Display time in the clock
+    }
+    displayTime() // Display the time right away by calling the function
+    setInterval(displayTime, 1000); // And then update it every second. Call the function again every second
+ </script>
+</body>
+</html>
