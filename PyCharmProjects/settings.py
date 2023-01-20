@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'PyCharmProjects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-        'default': dj_database_url.config(default='postgresql://postgres:hero1234@localhost:5432/wy2403-myapp',
-                                          conn_max_age=600)}
+# DATABASES = {
+#         'default': dj_database_url.config(default='postgresql://postgres:hero1234@localhost:5432/wy2403-myapp',
+#                                           conn_max_age=600)}
 
 
 # Password validation
