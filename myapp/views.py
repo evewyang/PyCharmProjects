@@ -93,10 +93,48 @@ def register_new_user(request):
 
 
 def map(request):
-    m = folium.Map()
-    m = m._repr_html_
     data = dict()
-    data['m'] = m
-    # convert the map object into a html string
+    m = folium.Map()
+    # activate the reset button
+    try:
+        request.GET['reset']
+        print("resetting")
+        data['number_of_cities'] = 0
+        data['m'] = m._repr_html_
+        return render(request, "map.html", context=data)
+    except:
+        pass
+    # create the markers
+    try:
+        request.GET['city_list']
+        number_of_cities = int(request.GET['number_of_cities'])
+        visiting_cities = list()
+        for i in range(number_of_cities):
+            name = "city" + str(i+1)
+            city_name = request.GET[name]
+            visiting_cities.append(city_name)
+        m = support_functions.add_markers(m, visiting_cities)
+        data['visiting_cities'] = visiting_cities
+        print('here')
+        m = m._repr_html_
+        data['m'] = m
+        return render(request, "map.html", data)
+    except:
+        pass
+    # get city names and number of city code
+    try:
+        number_of_cities = int(request.GET["number_of_cities"])
+        if number_of_cities > 0:
+            names = list()
+            for i in range(number_of_cities):
+                names.append("city" + str(i+1))
+            data['names'] = names
+            data['number_of_cities'] = number_of_cities
+        m = m._repr_html_
+        data['m'] = m
+    except:
+        data['number_of_cities'] = 0
+        m = m._repr_html_
+        data['m'] = m
     return render(request, "map.html", context=data)
 
