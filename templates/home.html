@@ -1,14 +1,41 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<img src="{% static 'myapp/logo.png'%}">
-<body>
-This is my <span style="color: red">wonderful</span> home page.
-<h1> Current Porfolio</h1>
-The time now is :{{ time }}{{ xy }}
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <div class="jumbotron text-center">
+        <p>What a wonderful App this is!</p>
+        <p>Using this app, you can get exchange rates easily!</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="lobster">Currency Rates!</h3>
+                <p>Click <a href="{% url 'currencies' %}">here</a> to check available rates</p>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="lobster">Navigation!</h3>
+                <p>Please choose an action from the following options</p>
+                <ul>
+                    <li><a href="{% url 'maintenance' %}">Do maintenance</a></li>
+                    <li><a href="{% url 'currency_selector' %}">Get rates</a></li>
+                    <li>Other stuff</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="lobster">The future!</h3>
+                <p>Soon, you will be able to invest your money by buying, selling and saving in any currency!</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<img src="{% static 'myapp/logo.png'%}">#}
+{#<body>#}
+{#This is my <span style="color: red">wonderful</span> home page.#}
+{#<h1> Current Porfolio</h1>#}
+{#The time now is :{{ time }}{{ xy }}#}
+{#</body>#}
+{#</html>#}
