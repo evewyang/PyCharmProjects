@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="en">
+<head>
+{#<div style="background-color: darksalmon">#}
+{#    Simple base.html.#}
+{#    Load the django app that manages static files.#}
+{#    Load the static file we created (currently empty).#}
+{#    Barebones formatting</div>#}
+    <meta charset="UTF-8">
+    <title>Currency App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <div style="background-color: darksalmon">
+    <img src='{% static "myapp/logo.png" %}' alt="image" width="200px">
+    <span style="float:right;">
+        {% if user.username %}
+            <span class="large-font">Hello {{ user.username }}!</span><br>
+            <a href="{% url 'logout' %}"><button>logout</button></a>
+        {% else %}
+            <span class="large-font">Hello Anonymous User!</span><br>
+            <a href="{% url 'login' %}"><button>login</button></a>
+            <a href="{% url 'register_user' %}"><button>register</button></a>
+        {% endif %}
+    </span>
+    </div>
+    {% block content %}
+        <h1 class=“large-font"><-- This is where the page content will go! --></h1>
+    {% endblock %}
+    <div id="footer">
+        ©2023 Columbia Business School. All Rights Reserved
+    </div>
+</body>
+</html>
